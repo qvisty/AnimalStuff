@@ -12,6 +12,9 @@ er testet på dyr.
 - **🔍 Søg efter mærke** — søg direkte i appens database over kendte mærker.
 - **🐰 Info** — forklaring af statusserne og mærkningsordningerne
   (Leaping Bunny, PETA, EU's forbud mod dyretestet kosmetik).
+- **🔗 Kildehenvisninger** — hvert resultat viser klikbare kilder med en
+  forklaring på, hvad kilden dokumenterer (`src/data/sources.ts`), så
+  vurderingen altid kan efterprøves.
 
 ## Statusser
 
@@ -52,6 +55,7 @@ src/
   api/products.ts          # Opslag af stregkoder i Open Beauty/Food Facts
   components/ResultCard.tsx# Visning af et vurderingsresultat
   data/brands.ts           # Vejledende branddatabase
+  data/sources.ts          # Kildehenvisninger med forklaring pr. status
   logic/lookup.ts          # Normalisering, søgning og matchning af brands
   screens/                 # ScanScreen, SearchScreen, InfoScreen
   theme.ts                 # Farver og statusmetadata
