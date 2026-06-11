@@ -5,6 +5,13 @@ export type BrandStatus =
   | 'tests' // Tester på dyr eller sælger på markeder, der kræver dyreforsøg
   | 'unknown';
 
+export interface SourceRef {
+  title: string;
+  url: string;
+  /** Kort forklaring på, hvad kilden dokumenterer */
+  explanation: string;
+}
+
 export interface Brand {
   name: string;
   aliases?: string[];
@@ -12,6 +19,8 @@ export interface Brand {
   parentCompany?: string;
   certifications?: ('Leaping Bunny' | 'PETA')[];
   note?: string;
+  /** Brand-specifikke kilder ud over standardkilderne for statussen */
+  sources?: SourceRef[];
 }
 
 export interface LookupResult {

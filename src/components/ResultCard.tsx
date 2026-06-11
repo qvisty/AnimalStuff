@@ -1,15 +1,28 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
+import { STATUS_SOURCES } from '../data/sources';
 import { colors, statusMeta } from '../theme';
-import { LookupResult } from '../types';
+import { LookupResult, SourceRef } from '../types';
 
 interface Props {
   result: LookupResult;
 }
 
+function Source({ source }: { source: SourceRef }) {
+  return (
+    <View style={styles.source}>
+      <Pressable onPress={() => Linking.openURL(source.url)}>
+        <Text style={styles.sourceLink}>🔗 {source.title}</Text>
+      </Pressable>
+      <Text style={styles.sourceExplanation}>{source.explanation}</Text>
+    </View>
+  );
+}
+
 export default function ResultCard({ result }: Props) {
   const meta = statusMeta[result.status];
   const brand = result.brand;
+  const sources = [...STATUS_SOURCES[result.status], ...(brand?.sources ?? [])];
 
   return (
     <View style={[styles.card, { borderLeftColor: meta.color }]}>
@@ -43,6 +56,15 @@ export default function ResultCard({ result }: Props) {
         <Text style={styles.detail}>Moderselskab: {brand.parentCompany}</Text>
       ) : null}
       {brand?.note ? <Text style={styles.note}>{brand.note}</Text> : null}
+
+      {sources.length > 0 ? (
+        <View style={styles.sourcesSection}>
+          <Text style={styles.sourcesHeading}>Kilder</Text>
+          {sources.map((source) => (
+            <Source key={source.url + source.title} source={source} />
+          ))}
+        </View>
+      ) : null}
     </View>
   );
 }
@@ -75,5 +97,30 @@ const styles = StyleSheet.create({
     color: colors.muted,
     fontStyle: 'italic',
     lineHeight: 18,
+  },
+  sourcesSection: {
+    marginTop: 12,
+    paddingTop: 12,
+    borderTopWidth: 1,
+    borderTopColor: colors.border,
+  },
+  sourcesHeading: {
+    fontSize: 13,
+    fontWeight: '700',
+    color: colors.text,
+    marginBottom: 4,
+  },
+  source: { marginTop: 6 },
+  sourceLink: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: colors.primary,
+    textDecorationLine: 'underline',
+  },
+  sourceExplanation: {
+    fontSize: 12,
+    color: colors.muted,
+    lineHeight: 17,
+    marginTop: 2,
   },
 });
