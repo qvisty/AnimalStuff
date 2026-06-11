@@ -3,6 +3,11 @@
 # dependencies
 node_modules/
 
+# Lockfilen kunne ikke pushes fra det oprindelige byggemiljø (for stor til
+# GitHub-API'et). Fjern gerne denne linje og commit den fra din egen maskine
+# efter `npm install` for reproducerbare builds.
+package-lock.json
+
 # Expo
 .expo/
 dist/
