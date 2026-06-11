@@ -1,0 +1,98 @@
+import { Brand } from '../types';
+
+/**
+ * Vejledende database over kendte mærkers dyreforsøgs-status.
+ *
+ * Kilderne er offentlige lister fra Leaping Bunny (crueltyfreeinternational.org),
+ * PETA's "Beauty Without Bunnies"-program samt mærkernes egne erklæringer.
+ * Status kan ændre sig (opkøb, nye markeder m.m.) — tjek altid den aktuelle
+ * certificering, før du træffer en endelig beslutning.
+ */
+export const BRANDS: Brand[] = [
+  // ── Certificeret fri for dyreforsøg ───────────────────────────────
+  { name: 'Lush', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'The Body Shop', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'e.l.f. Cosmetics', aliases: ['elf', 'e.l.f.'], status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: "Dr. Bronner's", aliases: ['dr bronners'], status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: "Paula's Choice", aliases: ['paulas choice'], status: 'certified_cruelty_free', certifications: ['Leaping Bunny'], parentCompany: 'Unilever', note: 'Mærket er certificeret, men moderselskabet Unilever har mærker, der sælges på markeder med krav om dyreforsøg.' },
+  { name: 'Pacifica', status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: 'Derma E', status: 'certified_cruelty_free', certifications: ['Leaping Bunny', 'PETA'] },
+  { name: 'EcoTools', status: 'certified_cruelty_free', certifications: ['Leaping Bunny', 'PETA'] },
+  { name: 'wet n wild', aliases: ['wet n wild beauty'], status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: 'Milani', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'ColourPop', aliases: ['colour pop'], status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: 'Essence', aliases: ['essence cosmetics'], status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: 'Catrice', status: 'certified_cruelty_free', certifications: ['PETA'] },
+  { name: 'Makeup Revolution', aliases: ['revolution', 'revolution beauty'], status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'Faith in Nature', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'Weleda', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'] },
+  { name: 'Urtekram', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'], note: 'Dansk mærke. Økologisk certificeret.' },
+  { name: 'Ecover', status: 'certified_cruelty_free', certifications: ['Leaping Bunny'], note: 'Rengøringsmidler.' },
+  { name: 'Method', aliases: ['method products'], status: 'certified_cruelty_free', certifications: ['Leaping Bunny'], note: 'Rengøringsmidler.' },
+
+  // ── Erklæret fri for dyreforsøg (uden uafhængig certificering) ──
+  { name: 'GOSH Copenhagen', aliases: ['gosh'], status: 'cruelty_free', note: 'Dansk mærke. Erklærer, at hverken produkter eller ingredienser testes på dyr.' },
+  { name: 'Fenty Beauty', aliases: ['fenty'], status: 'cruelty_free' },
+  { name: 'Charlotte Tilbury', status: 'cruelty_free', parentCompany: 'Puig' },
+  { name: 'Anastasia Beverly Hills', aliases: ['abh'], status: 'cruelty_free' },
+  { name: 'The Inkey List', aliases: ['inkey list'], status: 'cruelty_free' },
+  { name: 'Isadora', status: 'cruelty_free', note: 'Svensk mærke. Erklærer sig fri for dyreforsøg.' },
+
+  // ── Mærket tester ikke, men moderselskabet gør ──────────────────
+  { name: 'NYX Professional Makeup', aliases: ['nyx'], status: 'parent_tests', certifications: ['PETA'], parentCompany: "L'Oréal" },
+  { name: 'Urban Decay', status: 'parent_tests', certifications: ['PETA'], parentCompany: "L'Oréal" },
+  { name: 'Garnier', status: 'parent_tests', certifications: ['Leaping Bunny'], parentCompany: "L'Oréal", note: 'Garnier blev Leaping Bunny-certificeret i 2021, men ejes af L’Oréal.' },
+  { name: 'Aesop', status: 'parent_tests', parentCompany: "L'Oréal", note: 'Opkøbt af L’Oréal i 2023. Mærket selv tester ikke.' },
+  { name: 'The Ordinary', aliases: ['deciem'], status: 'parent_tests', parentCompany: 'Estée Lauder' },
+  { name: 'Too Faced', status: 'parent_tests', certifications: ['PETA'], parentCompany: 'Estée Lauder' },
+  { name: 'Burt’s Bees', aliases: ['burts bees'], status: 'parent_tests', certifications: ['Leaping Bunny'], parentCompany: 'Clorox' },
+  { name: 'Dermalogica', status: 'parent_tests', certifications: ['Leaping Bunny'], parentCompany: 'Unilever' },
+  { name: 'Hourglass', status: 'parent_tests', certifications: ['Leaping Bunny'], parentCompany: 'Unilever' },
+  { name: 'REN Clean Skincare', aliases: ['ren'], status: 'parent_tests', parentCompany: 'Unilever' },
+  { name: 'Tatcha', status: 'parent_tests', parentCompany: 'Unilever' },
+  { name: 'Dove', status: 'parent_tests', certifications: ['PETA'], parentCompany: 'Unilever', note: 'Dove er PETA-godkendt, men Unilever-koncernen har mærker, der sælges på markeder med krav om dyreforsøg.' },
+  { name: 'Herbal Essences', status: 'parent_tests', certifications: ['PETA'], parentCompany: 'Procter & Gamble' },
+  { name: 'Aussie', status: 'parent_tests', certifications: ['PETA'], parentCompany: 'Procter & Gamble' },
+
+  // ── Tester på dyr / sælger på markeder med krav om dyreforsøg ───
+  { name: "L'Oréal Paris", aliases: ['loreal', "l'oreal", 'loreal paris'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Maybelline', aliases: ['maybelline new york'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Lancôme', aliases: ['lancome'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: "Kiehl's", aliases: ['kiehls'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'La Roche-Posay', aliases: ['la roche posay'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Vichy', status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Yves Saint Laurent Beauté', aliases: ['ysl', 'yves saint laurent'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Giorgio Armani Beauty', aliases: ['armani beauty', 'giorgio armani'], status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Estée Lauder', aliases: ['estee lauder'], status: 'tests', parentCompany: 'Estée Lauder' },
+  { name: 'MAC Cosmetics', aliases: ['mac', 'm.a.c'], status: 'tests', parentCompany: 'Estée Lauder' },
+  { name: 'Clinique', status: 'tests', parentCompany: 'Estée Lauder' },
+  { name: 'Bobbi Brown', status: 'tests', parentCompany: 'Estée Lauder' },
+  { name: 'La Mer', status: 'tests', parentCompany: 'Estée Lauder' },
+  { name: 'Benefit Cosmetics', aliases: ['benefit'], status: 'tests', parentCompany: 'LVMH' },
+  { name: 'Dior', aliases: ['christian dior', 'dior beauty'], status: 'tests', parentCompany: 'LVMH' },
+  { name: 'Givenchy', status: 'tests', parentCompany: 'LVMH' },
+  { name: 'Guerlain', status: 'tests', parentCompany: 'LVMH' },
+  { name: 'Chanel', status: 'tests', parentCompany: 'Chanel' },
+  { name: 'Nivea', status: 'tests', parentCompany: 'Beiersdorf' },
+  { name: 'Eucerin', status: 'tests', parentCompany: 'Beiersdorf' },
+  { name: 'Labello', status: 'tests', parentCompany: 'Beiersdorf' },
+  { name: 'Shiseido', status: 'tests', parentCompany: 'Shiseido' },
+  { name: 'NARS', status: 'tests', parentCompany: 'Shiseido' },
+  { name: 'OPI', status: 'tests', parentCompany: 'Wella' },
+  { name: 'Essie', status: 'tests', parentCompany: "L'Oréal" },
+  { name: 'Rimmel', aliases: ['rimmel london'], status: 'tests', parentCompany: 'Coty' },
+  { name: 'Max Factor', status: 'tests', parentCompany: 'Coty' },
+  { name: 'Olay', status: 'tests', parentCompany: 'Procter & Gamble' },
+  { name: 'Pantene', status: 'tests', parentCompany: 'Procter & Gamble' },
+  { name: 'Head & Shoulders', aliases: ['head and shoulders'], status: 'tests', parentCompany: 'Procter & Gamble' },
+  { name: 'Gillette', status: 'tests', parentCompany: 'Procter & Gamble' },
+  { name: 'Oral-B', aliases: ['oral b'], status: 'tests', parentCompany: 'Procter & Gamble' },
+  { name: 'Colgate', status: 'tests', parentCompany: 'Colgate-Palmolive' },
+  { name: 'Palmolive', status: 'tests', parentCompany: 'Colgate-Palmolive' },
+  { name: 'Neutrogena', status: 'tests', parentCompany: 'Kenvue (Johnson & Johnson)' },
+  { name: 'Listerine', status: 'tests', parentCompany: 'Kenvue (Johnson & Johnson)' },
+  { name: 'Vaseline', status: 'tests', parentCompany: 'Unilever' },
+  { name: 'Rexona', aliases: ['sure'], status: 'tests', parentCompany: 'Unilever' },
+  { name: 'Axe', aliases: ['lynx'], status: 'tests', parentCompany: 'Unilever' },
+  { name: 'Victoria’s Secret', aliases: ['victorias secret'], status: 'tests', parentCompany: 'Victoria’s Secret & Co.' },
+];
