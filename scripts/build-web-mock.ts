@@ -75,8 +75,8 @@ const META = ${JSON.stringify(statusMeta)};
 
 function normalize(name) {
   return name.toLowerCase().normalize('NFD')
-    .replace(/[\\u0300-\\u036f]/g, '')
-    .replace(/[\\u2019']/g, '')
+    .replace(/[̀-ͯ]/g, '')
+    .replace(/[’']/g, '')
     .replace(/[^a-z0-9æøå]+/g, ' ')
     .trim();
 }
@@ -127,7 +127,7 @@ q.addEventListener('input', () => {
   out.innerHTML = q.value.trim()
     ? (hits.length
         ? hits.map((b) => card({ status: b.status, brand: b, queriedName: b.name })).join('')
-        : '<p class="hint">Ingen mærker matcher \\u201c' + esc(q.value.trim()) + '\\u201d. Databasen er vejledende — kig efter Leaping Bunny- eller PETA-logoet på emballagen.</p>')
+        : '<p class="hint">Ingen mærker matcher “' + esc(q.value.trim()) + '”. Databasen er vejledende — kig efter Leaping Bunny- eller PETA-logoet på emballagen.</p>')
     : '';
 });
 
