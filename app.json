@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Kaninfri",
+    "slug": "kaninfri",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Kaninfri bruger kameraet til at scanne produkters stregkoder, så appen kan vurdere, om produktet er testet på dyr."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Kaninfri bruger kameraet til at scanne produkters stregkoder, så appen kan vurdere, om produktet er testet på dyr."
+      }
+    },
+    "android": {
+      "permissions": ["android.permission.CAMERA"],
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE"
+      },
+      "predictiveBackGestureEnabled": false
+    }
+  }
+}
